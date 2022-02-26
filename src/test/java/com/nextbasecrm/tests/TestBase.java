@@ -6,6 +6,7 @@ import com.nextbasecrm.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -42,5 +43,9 @@ public class TestBase {
         WebElement loginBtn = driver.findElement(By.xpath("//input[@type='submit']"));
         BrowserUtils.sleep(2);
         loginBtn.click();
+        //verify title
+        String expectedTitle = "Portal";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle,expectedTitle);
     }
 }
